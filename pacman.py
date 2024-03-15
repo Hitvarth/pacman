@@ -1,0 +1,3 @@
+'''
+Algorithms for pacman movement
+'''
