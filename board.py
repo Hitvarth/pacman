@@ -4,6 +4,7 @@ symbols = {
     "empty" : ' '  
 }
 
+# 30 by 28
 board = [ 
     ['W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W'],
     ['W', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'W', 'W', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'W'], 
@@ -49,24 +50,30 @@ def getValue(coord):
     i, j = coord
     return board[i][j]
 
-adjacency_list = {}
-for i in range(len(board)):
-    for j in range(len(board[i])):
-        coord = (i, j)
-        val = getValue(coord)
-        if val != 'W':
-            adjacency_list[coord] = []
-            up_neighbor = (i - 1, j)
-            down_neighbor = (i + 1, j)
-            left_neighbor = (i, j - 1)
-            right_neighbor = (i, j + 1)
+def getAdjacencyList(board):
+    adjacency_list = {}
+    breakpoint()
+    for i in range(len(board)):
+        for j in range(len(board[i])):
+            coord = (i, j)
+            val = getValue(coord)
+            if val != 'W':
+                adjacency_list[coord] = []
+                up_neighbor = (i - 1, j)
+                down_neighbor = (i + 1, j)
+                left_neighbor = (i, j - 1)
+                right_neighbor = (i, j + 1)
 
-            if onBoard(up_neighbor) and getValue(up_neighbor) != 'W':
-                adjacency_list[coord].append(up_neighbor)
-            if onBoard(down_neighbor) and getValue(down_neighbor) != 'W':
-                adjacency_list[coord].append(down_neighbor)
-            if onBoard(left_neighbor) and getValue(left_neighbor) != 'W':
-                adjacency_list[coord].append(left_neighbor)
-            if onBoard(right_neighbor) and getValue(right_neighbor) != 'W':
-                adjacency_list[coord].append(right_neighbor)
+                if onBoard(up_neighbor) and getValue(up_neighbor) != 'W':
+                    adjacency_list[coord].append(up_neighbor)
+                if onBoard(down_neighbor) and getValue(down_neighbor) != 'W':
+                    adjacency_list[coord].append(down_neighbor)
+                if onBoard(left_neighbor) and getValue(left_neighbor) != 'W':
+                    adjacency_list[coord].append(left_neighbor)
+                if onBoard(right_neighbor) and getValue(right_neighbor) != 'W':
+                    adjacency_list[coord].append(right_neighbor)
+    return adjacency_list
+
+adjacency_list = getAdjacencyList(board)
+
 # print(adjacency_list)
