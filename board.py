@@ -69,4 +69,4 @@ for i in range(len(board)):
                 adjacency_list[coord].append(left_neighbor)
             if onBoard(right_neighbor) and getValue(right_neighbor) != 'W':
                 adjacency_list[coord].append(right_neighbor)
-print(adjacency_list)
+# print(adjacency_list)
